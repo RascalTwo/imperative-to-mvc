@@ -1,5 +1,6 @@
 const express = require('express');
 const { getPosts, createPost, deletePost, finishPost } = require('../controller/posts');
+const { addSSEClient, updateSSEClients } = require('../middlewares/index')
 
 function asyncHandler(cb) {
   return async (req, res, next) => {
@@ -31,6 +32,10 @@ router
   .get(asyncHandler(getPosts))
   .post(asyncHandler(createPost))
   .put(asyncHandler(finishPost))
-  .delete(asyncHandler(deletePost));
+  .delete(asyncHandler(deletePost))
+  .all(updateSSEClients);
+
+router
+  .get('/stream', addSSEClient);
 
 module.exports = router;
