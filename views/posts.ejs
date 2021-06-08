@@ -9,15 +9,7 @@
   </head>
   <body>
     <h1>Posts</h1>
-    <ul>
-      <% for (let post of posts) { %>
-      <li class= <%= post.finished && 'done' %>>
-        <span> <%= post.id %> </span>
-        <span> - <%= post.user %> </span>
-        <span> - <%= post.post %> </span>
-      </li>
-      <% } %>
-    </ul>
+    <%- include('post-list', { posts: posts }) -%>
     <script src="main.js"></script>
   </body>
 </html>

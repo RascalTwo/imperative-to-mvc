@@ -1,0 +1,9 @@
+<ul>
+	<% for (let post of posts) { %>
+	<li class= <%= post.finished && 'done' %>>
+		<span> <%= post.id %> </span>
+		<span> - <%= post.user %> </span>
+		<span> - <%= post.post %> </span>
+	</li>
+	<% } %>
+</ul>
